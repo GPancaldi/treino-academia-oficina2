@@ -5,15 +5,15 @@ Sistema para cadastrar treinos na academia
 
 
 # Requisitos técnicos
-Back-end:
-Front-end:
-Banco de dados:
-Teste front:
-Teste back
+- Back-end:
+- Front-end:
+- Banco de dados:
+- Teste front:
+- Teste back
 
 # Tipo de usuário
 
-Professor - Cadastrar treino de alunos
-Aluno - Visualizar treino e fazer comentários.
+- Professor - Cadastrar treino de alunos
+- Aluno - Visualizar treino e fazer comentários.
 
 # Requisitos funcionais
