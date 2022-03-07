@@ -4,7 +4,7 @@ Sistema para cadastrar treinos na academia
 - Gabriel Pancaldi - RA:1914758
 
 
-#Requisitos técnicos
+# Requisitos técnicos
 Back-end:
 Front-end:
 Banco de dados:
