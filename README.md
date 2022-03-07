@@ -1,6 +1,6 @@
 Sistema para cadastrar treinos na academia
 
-#MEMBROS
+# MEMBROS
 - Gabriel Pancaldi - RA:1914758
 
 
@@ -11,9 +11,9 @@ Banco de dados:
 Teste front:
 Teste back
 
-#Tipo de usuário
+# Tipo de usuário
 
 Professor - Cadastrar treino de alunos
 Aluno - Visualizar treino e fazer comentários.
 
-#Requisitos funcionais
+# Requisitos funcionais
