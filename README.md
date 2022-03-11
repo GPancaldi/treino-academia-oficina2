@@ -2,6 +2,10 @@ Sistema para cadastrar treinos na academia
 
 # MEMBROS
 - Gabriel Pancaldi - RA:1914758
+- Renan Steiger - RA:1914847
+- Armando Thomazinni
+- Felipe Oliveira
+- Lucas Camacho
 
 
 # Requisitos técnicos
