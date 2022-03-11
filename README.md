@@ -11,7 +11,7 @@ Sistema para cadastrar treinos na academia
 # Requisitos técnicos
 - Back-end: Express JS
 - Front-end: Angular
-- Banco de dados: postgressSQL
+- Banco de dados: PostgressSQL
 - Teste front:
 - Teste back: 
 
