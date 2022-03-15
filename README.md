@@ -24,7 +24,7 @@ Sistema para cadastrar treinos na academia
 
 - 1 - Login do usuário
 - 2 - Cadastro de professor
-- 3 - Cadastro de aluno
+- 3 - Professor cadastra  aluno 
 - 4 - Cadastrar treino (professor)
 - 5 - Listar treinos cadastrados (Professor)
 - 6 - Cadastrar exercicios (professor)
