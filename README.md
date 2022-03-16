@@ -3,7 +3,7 @@ Sistema para cadastrar treinos na academia
 # MEMBROS
 - Gabriel Pancaldi - RA:1914758
 - Renan Steiger - RA:1914847
-- Armando Thomazinni
+- Armando Thomazinni - RA: 2112639
 - Felipe Oliveira
 - Lucas Camacho
 
