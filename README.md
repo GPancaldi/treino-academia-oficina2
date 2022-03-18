@@ -4,7 +4,7 @@ Sistema para cadastrar treinos na academia
 - Gabriel Pancaldi - RA:1914758
 - Renan Steiger - RA:1914847
 - Armando Thomazinni - RA: 2112639
-- Felipe Oliveira
+- Felipe Oliveira - RA: 1914499
 - Lucas Camacho
 
 
