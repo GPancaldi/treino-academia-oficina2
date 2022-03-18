@@ -1,0 +1,43 @@
+<div>
+  <span>Dados do Cliente</span>
+</div>
+<div>
+  <mat-form-field appearance="outline">
+    <mat-label>Nome</mat-label>
+    <input matInput #name maxlength="10" placeholder="Placeholder">
+    <mat-hint align="end">{{name.value?.length || 0}}/10</mat-hint>
+  </mat-form-field>
+</div>
+<div>
+  
+  <mat-form-field appearance="outline">
+    <mat-label>Senha</mat-label>
+    <input matInput #name maxlength="10" placeholder="Placeholder">
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="pat@example.com" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field appearance="outline">
+    <mat-label>Sexo</mat-label>
+    <mat-select>
+      <mat-option value="masculino">Masculino</mat-option>
+      <mat-option value="feminino">Feminino</mat-option>
+      <mat-option value="outros">Outros</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field appearance="outline">
+    <mat-label>Data de Nascimento</mat-label>
+    <input matInput [matDatepicker]="picker1" [formControl]="date">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+</div>
