@@ -12,7 +12,7 @@ Sistema para cadastrar treinos na academia
 - Back-end: Express JS
 - Front-end: Angular
 - Banco de dados: PostgressSQL
-- Teste front:
+- Teste front: Jasmine
 - Teste back: Jest
 
 # Tipo de usuário
