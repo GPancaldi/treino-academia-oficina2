@@ -5,7 +5,7 @@ Sistema para cadastrar treinos na academia
 - Renan Steiger - RA:1914847
 - Armando Thomazinni - RA: 2112639
 - Felipe Oliveira - RA: 1914499
-- Lucas Camacho
+- Lucas Camacho: RA: 1884905
 
 
 # Requisitos técnicos
