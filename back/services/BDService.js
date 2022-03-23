@@ -10,13 +10,16 @@ class BDService {
     async initConnection() {
         console.log("Iniciando conexão com banco");
         await this.client.connect();
-        console.log("Conexão estabelecida com sucesso, teste...")
+        console.log("Teste query")
         await this.testeQuery();
     }
 
     async testeQuery() {
-        this.client.query("SELECT * from tableteste").then((res) => {
-            console.log(res.rows)
+        return new Promise((resolve) => {
+            this.client.query("SELECT * from tableteste").then((res) => {
+                console.log(res.rows)
+                resolve(res);
+            })
         })
     }
 }
