@@ -1,8 +1,15 @@
 const express = require('express')
 const app = express()
-const apiRouter = require('../routes/index');
-const BDService = require('../services/BDService');
+const apiRouter = require('../src/routes/index');
+const BDService = require('../src/services/BDService');
+app.use(express.json());
 app.use('/', apiRouter);
-app.bdService = new BDService();
+innitBD();
 module.exports = app;
 
+
+
+function innitBD() {
+    let bdService = new BDService();
+    app.set('bdService', bdService);
+}

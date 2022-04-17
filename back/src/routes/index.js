@@ -1,8 +1,8 @@
 const express = require('express');
-const helloWorldRoute = require('./helloworld');
+const userRoute = require('./user/user');
 
 const apiRouter = express.Router();
 
-apiRouter.use('/helloworld', helloWorldRoute);
+apiRouter.use('/user', userRoute);
 
 module.exports = apiRouter;
