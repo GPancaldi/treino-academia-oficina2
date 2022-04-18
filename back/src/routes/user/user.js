@@ -43,6 +43,23 @@ router.post('/', async (req, res) => {
   }
 })
 
+router.post('/login', async (req, res) => {
+  try {
+    let bdService = req.app.get('bdService');
+    let result = await bdService.getRawInstructions("SELECT * FROM users WHERE LOWER(email) = LOWER($1) AND isdeleted <> true AND password = $2", [req.body.email, req.body.password]);
+    if(result.length < 1) {
+      return res.status(401).send({
+        message : "Erro de autenticação"
+      })
+    }
+    res.send({success : true});
+  } catch (err) {
+    return res.status(400).send({
+      message : err.toString()
+    })
+  }
+})
+
 router.put('/:id', async (req, res) => {
   try {
     let bdService = req.app.get('bdService');
