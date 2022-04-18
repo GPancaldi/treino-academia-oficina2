@@ -1,0 +1,206 @@
+_type: export
+__export_format: 4
+__export_date: 2022-04-18T00:00:58.291Z
+__export_source: insomnia.desktop.app:v2022.2.1
+resources:
+  - _id: req_f2d8335e0cb348959b7ee9b764180743
+    parentId: fld_3f912a94638e4afc8a5bbd8e84678f35
+    modified: 1650230647629
+    created: 1650230619253
+    url: http://localhost:3000/user
+    name: Get Users
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1650230619253
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_3f912a94638e4afc8a5bbd8e84678f35
+    parentId: wrk_31b26a88449c43eaa7234b827d32c5c6
+    modified: 1650230552373
+    created: 1650230552373
+    name: User
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1650230552373
+    _type: request_group
+  - _id: wrk_31b26a88449c43eaa7234b827d32c5c6
+    parentId: null
+    modified: 1650230545594
+    created: 1650230545594
+    name: Academia Oficina
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_254507d1457146f592d4254ec79c1dd6
+    parentId: fld_3f912a94638e4afc8a5bbd8e84678f35
+    modified: 1650239487187
+    created: 1650231579803
+    url: http://localhost:3000/user/9
+    name: Get User
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1649873181097.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_19b0a4eb5ff048ce8a7c648336a893a3
+    parentId: fld_3f912a94638e4afc8a5bbd8e84678f35
+    modified: 1650239865646
+    created: 1650232138968
+    url: http://localhost:3000/user
+    name: Add User
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name" : "Johannes",
+        	"email" : "kadada@hotmail.com",
+        	"password" : "4215",
+        	"user_role_id" : 2
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_a8f14da769eb4c55bf43817a0e0a11f7
+    authentication: {}
+    metaSortKey: -1649694462019.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_69d9d022a3514464b8899aec08b7c4b5
+    parentId: fld_3f912a94638e4afc8a5bbd8e84678f35
+    modified: 1650240000206
+    created: 1650239868705
+    url: http://localhost:3000/user/login
+    name: Login
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email" : "jonahgr@hotmail.com",
+        	"password" : "45311"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_a8f14da769eb4c55bf43817a0e0a11f7
+    authentication: {}
+    metaSortKey: -1649649782250.3125
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_ad4ebbee1e674c628b8c9625a64861b8
+    parentId: fld_3f912a94638e4afc8a5bbd8e84678f35
+    modified: 1650239556421
+    created: 1650237926211
+    url: http://localhost:3000/user/9
+    name: Update User
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name" : "Da",
+        	"email" : "jonahgr@hotmail.com",
+        	"password" : "4531",
+        	"user_role_id" : 2
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_a8f14da769eb4c55bf43817a0e0a11f7
+    authentication: {}
+    metaSortKey: -1649605102480.875
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_0cb0ea8978e2458ba8c5801c30e4e320
+    parentId: fld_3f912a94638e4afc8a5bbd8e84678f35
+    modified: 1650239421579
+    created: 1650239403874
+    url: http://localhost:3000/user/7
+    name: Delete User
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1649560422711.4375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_6ceaf350e406554b08a39834084fe6dded79d68f
+    parentId: wrk_31b26a88449c43eaa7234b827d32c5c6
+    modified: 1650230545604
+    created: 1650230545604
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1650230545604
+    _type: environment
+  - _id: jar_6ceaf350e406554b08a39834084fe6dded79d68f
+    parentId: wrk_31b26a88449c43eaa7234b827d32c5c6
+    modified: 1650230545607
+    created: 1650230545607
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_c93d13aed6244b1caa42fcf8d69cb4e1
+    parentId: wrk_31b26a88449c43eaa7234b827d32c5c6
+    modified: 1650230545597
+    created: 1650230545597
+    fileName: Academia Oficina
+    contents: ""
+    contentType: yaml
+    _type: api_spec
