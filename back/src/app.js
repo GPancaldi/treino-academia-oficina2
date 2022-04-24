@@ -4,8 +4,8 @@ const apiRouter = require('../src/routes/index');
 const BDService = require('../src/services/BDService');
 var cors = require('cors')
 app.use(express.json());
-app.use('/', apiRouter);
 app.use(cors())
+app.use('/', apiRouter)
 innitBD();
 module.exports = app;
 
