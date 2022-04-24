@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ApiService } from '../shared/services/api.service';
 import { UserInfoService } from '../shared/services/user-info.service';
@@ -12,6 +13,7 @@ import { UserInfoService } from '../shared/services/user-info.service';
 export class LoginComponent implements OnInit{
 
   isRegister = false;
+  usersList: any[];
 
   @Output() submitEM = new EventEmitter();
 
@@ -19,12 +21,14 @@ export class LoginComponent implements OnInit{
     name: new FormControl(''),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
+    user_role_id: new FormControl(''),
   });
 
   constructor(
     private _userInfo: UserInfoService,
     private router: Router,
-    private _api: ApiService
+    private _api: ApiService,
+    private _snackBar: MatSnackBar
   ) { }
 
   submit() {
@@ -61,17 +65,45 @@ export class LoginComponent implements OnInit{
   }
 
   onLogin() {
+    return new Promise((resolve, reject) => {
+      this._api.post('/user/login', this.form.value)
+        .subscribe((response: any) => {
+          const idUser = 3;
+          this._userInfo.setUserInfo(2);
+          localStorage.setItem('user', idUser.toString())
+          console.log(response)
+          this.router.navigate(['/customers']);
+          resolve(response)
+        }, reject)
+    })
+  }
 
-    const idUser = 3;
-    this._userInfo.setUserInfo(2);
-    localStorage.setItem('user', idUser.toString())
-    let teste = this._userInfo.getUserInfo();
+  async autenticate() {
+    try {
+      await this.onLogin()
+    }
+    catch(error) {
+      this._snackBar.open('Login Inválido!', '', {duration: 10000});
+    }
   }
 
   saveNewUser() {
+    this.form.patchValue({
+      user_role_id: 1
+    });
     return new Promise((resolve, reject) => {
-      this._api.post('/cliente', this.form)
+      this._api.post('/user', this.form.value)
         .subscribe((response: any) => {
+          resolve(response)
+        }, reject)
+    })
+  }
+
+  autenticateUser(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this._api.post('/user/login', this.form.value)
+        .subscribe((response: any) => {
+          console.log(response)
           resolve(response)
         }, reject)
     })

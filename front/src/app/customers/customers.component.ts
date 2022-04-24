@@ -15,7 +15,7 @@ export class CustomersComponent implements OnInit {
     name:  new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
     email:  new FormControl('', [Validators.required, Validators.email]),
-    role: new FormControl(''),
+    user_role_id: new FormControl(''),
   });
 
   constructor(
@@ -58,7 +58,7 @@ export class CustomersComponent implements OnInit {
 
   add() {
     this.form.patchValue({
-      role: 2
+      user_role_id: 2
     });
     return new Promise((resolve, reject) => {
       console.log('teste')
