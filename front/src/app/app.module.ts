@@ -18,13 +18,25 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MatListModule } from '@angular/material/list';
 import { WorkoutsComponent } from './workouts/workouts.component';
 import { GymsComponent } from './gyms/gyms.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { LoginComponent } from './login/login.component';
+import { ExercisesComponent } from './exercises/exercises/exercises.component';
+import { ApiService } from './shared/services/api.service';
+import { UserInfoService } from './shared/services/user-info.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomersComponent,
     WorkoutsComponent,
-    GymsComponent
+    GymsComponent,
+    LoginComponent,
+    ExercisesComponent
   ],
   imports: [
     BrowserModule,
@@ -40,11 +52,18 @@ import { GymsComponent } from './gyms/gyms.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatMomentDateModule,
-    MatListModule
+    MatListModule,
+    MatTableModule,
+    MatDialogModule,
+    MatCardModule,
+    MatButtonModule,
+    HttpClientModule
   ],
   providers: [
     MatDatepickerModule,
-    MatNativeDateModule  
+    MatNativeDateModule,
+    ApiService,
+    UserInfoService
   ],
   bootstrap: [AppComponent]
 })

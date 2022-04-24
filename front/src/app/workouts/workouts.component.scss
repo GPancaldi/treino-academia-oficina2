@@ -1,0 +1,60 @@
+table {
+    width: 100%;
+}
+  
+.mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+    border-color: currentColor;
+    background-color: whitesmoke;
+}
+
+.demo-row-is-clicked {
+    font-weight: bold;
+    background-color: whitesmoke;
+}
+
+.form {
+    //display: flex; 
+    //flex-direction: row;
+    padding-top: 20px;
+    justify-content: center;
+}
+
+.field {
+    padding-left: 20px;
+}
+
+.button {
+    margin-right: 10px;
+    background: black;
+    font-size: 20px;
+    height: 58px;
+}
+
+.field-button {
+    padding-left: 20px;
+    padding-top: 5px;
+}
+
+.title {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.header {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    margin-right: 10px;
+    width: 300px;
+    background: black;
+    font-size: 20px;
+}

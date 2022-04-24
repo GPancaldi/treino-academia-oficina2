@@ -1,16 +1,22 @@
-<mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <img src="https://scontent.fbfh3-2.fna.fbcdn.net/v/t1.6435-9/90019195_3449662715063695_5424714282359062528_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=174925&_nc_eui2=AeGW4tq02Shi82buy2BR8EfkgT9q0WmstM-BP2rRaay0z4koSdyAgkiosm0iuk0LPgGi4BCseQSzxs9WvPkv6tey&_nc_ohc=gUPXBjwlSoIAX9OqzK0&_nc_ht=scontent.fbfh3-2.fna&oh=00_AT9IqmktbiefTU9z1YFBU_K-KkPfKC8eOmxeYyZBnUayEw&oe=6253289E" alt="jay-pee" style="width:50px;height:50px;">
-  <span>toolbar</span>
-  <span class="example-spacer"></span>
-</mat-toolbar>
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
+<div *ngIf="showSidenav()">
+  <mat-toolbar>
+    <div class="div-flex">
+      <div>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <img src="assets\icons\sidenav-icon.png" alt="imagem" style="width:30px; height:50px;">
+        <span class="title">Strongman</span>
+      </div>
+      <button (click)="onLeave()" type="submit" mat-button >Sair</button>
+    </div>
+  </mat-toolbar>
+</div>
+<mat-drawer-container class="container">
+  <mat-drawer #drawer class="sidenav" mode="side">
     <mat-selection-list #shoes [multiple]="false">
       <mat-list-option [routerLink]="['/customers']" >Clientes</mat-list-option>
-      <mat-list-option [routerLink]="['/gyms']">Academias</mat-list-option>
+      <mat-list-option [routerLink]="['/exercises']">Exercícios</mat-list-option>
       <mat-list-option [routerLink]="['/workouts']">Treino</mat-list-option>
     </mat-selection-list>
   </mat-drawer>

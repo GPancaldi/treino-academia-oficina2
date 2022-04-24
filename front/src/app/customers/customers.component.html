@@ -1,43 +1,32 @@
-<div>
-  <span>Dados do Cliente</span>
+<div style="padding-left: 20px;">
+  <div class="header">
+    <span class="title">Dados do Cliente</span>
+    <button class="button" (click)="add()" mat-raised-button color="primary">Adicionar Cliente</button>
+  </div>
 </div>
-<div>
-  <mat-form-field appearance="outline">
-    <mat-label>Nome</mat-label>
-    <input matInput #name maxlength="10" placeholder="Placeholder">
-    <mat-hint align="end">{{name.value?.length || 0}}/10</mat-hint>
-  </mat-form-field>
-</div>
-<div>
-  
-  <mat-form-field appearance="outline">
-    <mat-label>Senha</mat-label>
-    <input matInput #name maxlength="10" placeholder="Placeholder">
-    <mat-hint>Hint</mat-hint>
-  </mat-form-field>
-</div>
-<div>
-  <mat-form-field appearance="outline">
-    <mat-label>Email</mat-label>
-    <input matInput placeholder="pat@example.com" [formControl]="email" required>
-    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-  </mat-form-field>
-</div>
-<div>
-  <mat-form-field appearance="outline">
-    <mat-label>Sexo</mat-label>
-    <mat-select>
-      <mat-option value="masculino">Masculino</mat-option>
-      <mat-option value="feminino">Feminino</mat-option>
-      <mat-option value="outros">Outros</mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-<div>
-  <mat-form-field appearance="outline">
-    <mat-label>Data de Nascimento</mat-label>
-    <input matInput [matDatepicker]="picker1" [formControl]="date">
-    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-    <mat-datepicker #picker1></mat-datepicker>
-  </mat-form-field>
-</div>
+<br>
+<hr>
+<br>
+<form [formGroup]="form" style="padding-left: 20px;">
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="name" maxlength="10" required>
+      <mat-error *ngIf="form.controls.name.invalid">{{getErrorMessage('name')}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Senha</mat-label>
+      <input matInput formControlName="password" maxlength="10" required>
+      <mat-error *ngIf="form.controls.password.invalid">{{getErrorMessage('password')}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="pat@example.com" formControlName="email" required>
+      <mat-error *ngIf="form.controls.email.invalid">{{getErrorMessageEmail()}}</mat-error>
+    </mat-form-field>
+  </div>
+</form>
