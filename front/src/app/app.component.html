@@ -13,7 +13,7 @@
   </mat-toolbar>
 </div>
 <mat-drawer-container class="container">
-  <mat-drawer #drawer class="sidenav" mode="side">
+  <mat-drawer #drawer class="sidenav" mode="side" [ngStyle]="{'display' : showSidenav() ? 'block' : 'none'}">
     <mat-selection-list #shoes [multiple]="false">
       <mat-list-option [routerLink]="['/customers']" >Clientes</mat-list-option>
       <mat-list-option [routerLink]="['/exercises']">Exercícios</mat-list-option>
