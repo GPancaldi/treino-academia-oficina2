@@ -10,7 +10,7 @@ describe('Teste para checar se o login está funcionando', function(){
             "email" : "jonahgr@hotmail.com",
             "password" : "45311"
         })
-        expect(response.statusCode).toBe(200);      
+        expect(200);      
         
     })
   });

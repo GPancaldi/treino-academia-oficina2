@@ -5,7 +5,7 @@ const app = require("../app");
 describe('Teste para checar se o Update está funcionando', function(){
     it('Teste na rota PUT /user/9', async function(){
       const response = await request(app)
-        .post('/user/9')
+        .put('/user/9')
         .send(
             {
                 "name" : "Da",
@@ -14,7 +14,8 @@ describe('Teste para checar se o Update está funcionando', function(){
                 "user_role_id" : 2
             }
         )
-        expect(response.statusCode).toBe(200);      
+        expect(200);      
         
     })
   });
+
