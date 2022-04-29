@@ -27,7 +27,7 @@ import { ExercisesComponent } from './exercises/exercises/exercises.component';
 import { ApiService } from './shared/services/api.service';
 import { UserInfoService } from './shared/services/user-info.service';
 import { HttpClientModule } from '@angular/common/http';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [

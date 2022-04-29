@@ -22,7 +22,7 @@
       </p>
       <div class="button">
         <button *ngIf="!isRegister" type="submit" (click)="autenticate()" mat-button>Login</button>
-        <button *ngIf="!isRegister" type="submit" (click)="onRegister()" mat-button >Cadastrar</button>
+        <button class="register-button" *ngIf="!isRegister" type="submit" (click)="onRegister()" mat-button >Cadastrar</button>
         <button *ngIf="isRegister" type="submit" (click)="isRegister = false" mat-button >Voltar</button>
         <button *ngIf="isRegister" type="submit" (click)="onRegisterSubmit()" mat-button >Cadastrar</button>
       </div>

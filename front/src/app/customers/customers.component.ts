@@ -45,7 +45,7 @@ export class CustomersComponent implements OnInit {
       };
       break;
     }
-    return;
+    return '';
   }
 
   getErrorMessageEmail() {
