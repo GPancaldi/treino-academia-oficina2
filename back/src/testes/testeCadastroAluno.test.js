@@ -2,41 +2,41 @@ const request = require("supertest");
 const app = require("../app");
 
 
- describe('Testes no cadastro de um aluno', function(){
-    it('Teste na rota POST /user happy way', async function(){
+ describe('Teste para checar se o cadastro esta funcionando', function(){
+    it('Teste na rota POST /user', async function(){
       const response = await request(app)
         .post('/user')
         .send({
-            "name" : "Professor",
-            "email" : "professor@hotmail.com",
+            "name" : "Johannes",
+            "email" : "kadada@hotmail.com",
             "password" : "4215",
-            "user_role_id" : 1
+            "user_role_id" : 2
         })
         expect(200);      
       
     })
 
-    it('Teste na rota POST /user badpath - email ja cadastrado', async function(){
+    it('Teste na rota POST /user Badpath - email ja cadastrado', async function(){
       const response = await request(app)
         .post('/user')
         .send({
-            "name" : "Professor teste",
-            "email" : "professor@hotmail.com",
-            "password" : "1234",
-            "user_role_id" : 1
+            "name" : "Jamal",
+            "email" : "kadada@hotmail.com",
+            "password" : "8383",
+            "user_role_id" : 2
         })
         expect(400);      
       
     })
 
-    it('Teste na rota POST /user happyway - Outro usuario', async function(){
+    it('Teste na rota POST /user Cadastro de outro aluno', async function(){
       const response = await request(app)
         .post('/user')
         .send({
-            "name" : "Professor Girafales",
-            "email" : "professorsalsicha@hotmail.com",
-            "password" : "9876",
-            "user_role_id" : 1
+            "name" : "Jamal",
+            "email" : "jamal@email.com",
+            "password" : "8383",
+            "user_role_id" : 2
         })
         expect(200);      
       
