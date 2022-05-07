@@ -25,7 +25,7 @@ const app = require("../app");
             "password" : "8383",
             "user_role_id" : 2
         })
-        expect(400);      
+        expect(401);      
       
     })
 
