@@ -118,6 +118,7 @@
   },
   "defaultProject": "strongman-front",
   "cli": {
+    "analytics": "33bf3935-062c-41be-bf0a-b56cd91303bd",
     "defaultCollection": "@angular-eslint/schematics"
   }
 }

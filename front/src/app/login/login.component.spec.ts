@@ -25,13 +25,13 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('Teste contagem rendereização do formulário login', () => {
+  it('should test the login form render count', () => {
     const formElement = fixture.debugElement.nativeElement.querySelector('form');
-    const imputElements = formElement.querySelectorAll('input');
-    expect(imputElements.length).toEqual(2);
+    const inputElements = formElement.querySelectorAll('input');
+    expect(inputElements.length).toEqual(2);
   });
 
-  it('Teste com inserção de dados login', (done) => {
+  it('should test login input data', (done) => {
     const loginFormEmailElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[0];
     const loginFormPasswordElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[1];
     loginFormEmailElement.value = 'teste@teste.com';
@@ -48,19 +48,19 @@ describe('LoginComponent', () => {
     });
   });
 
-  it('Teste de contagem de renderização de formulário cadastro professor', (done) => {
+  it('should test teacher registration form render count', (done) => {
     const buttonElement = fixture.debugElement.query(By.css('.register-button'));
     buttonElement.triggerEventHandler('click', null); 
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       const formElement = fixture.debugElement.nativeElement.querySelector('form');
-      const imputElements = formElement.querySelectorAll('input');
-      expect(imputElements.length).toEqual(3);
+      const inputElements = formElement.querySelectorAll('input');
+      expect(inputElements.length).toEqual(3);
       done();
     });
   });
 
-  it('Teste com inserção de dados cadastro professor', (done) => {
+  it('should test with data entry teacher registration', (done) => {
     const buttonElement = fixture.debugElement.query(By.css('.register-button'));
     buttonElement.triggerEventHandler('click', null); 
     fixture.detectChanges();
@@ -86,4 +86,21 @@ describe('LoginComponent', () => {
       });
     });
   });
+
+  it('Should be enter a valid email',(done) => {
+    const buttonElement = fixture.debugElement.query(By.css('.register-button'));
+    buttonElement.triggerEventHandler('click', null); 
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      const loginFormUserEmailElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[1];
+      loginFormUserEmailElement.value = 'teste@teste.com';
+      loginFormUserEmailElement.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(loginFormUserEmailElement.value).toContain('@', '.');
+        done();
+      });
+    });
+  });
+
 });

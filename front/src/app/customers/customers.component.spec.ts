@@ -23,13 +23,13 @@ describe('CustomersComponent', () => {
     fixture.detectChanges();
   });
 
-  it('Teste contagem rendereização do formulário cadastro de cliente', () => {
+  it('Should render the customer registration form', () => {
     const formElement = fixture.debugElement.nativeElement.querySelector('form');
-    const imputElements = formElement.querySelectorAll('input');
-    expect(imputElements.length).toEqual(3);
+    const inputElements = formElement.querySelectorAll('input');
+    expect(inputElements.length).toEqual(3);
   })
 
-  it('Teste com inserção de dados cadastro de cliente', (done) => {
+  it('Should enter customer registration data', (done) => {
     const loginFormUserEmailElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[2];
     const loginFormUserNameElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[0];
     const loginFormPasswordElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[1];
@@ -50,4 +50,31 @@ describe('CustomersComponent', () => {
       done();
     });
   });
+
+  it('Should be enter a valid email',(done) => {
+      const loginFormUserEmailElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[1];
+      loginFormUserEmailElement.value = 'teste@teste.com';
+      loginFormUserEmailElement.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(loginFormUserEmailElement.value).toContain('@', '.');
+        done();
+      });
+  });
+
+  it('Should not be enter a value null or void',(done) => {
+    const loginFormUserEmailElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[1];
+    const loginFormUserEmailElementNull: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[1];
+    loginFormUserEmailElementNull.value = null;
+    loginFormUserEmailElement.value = '';
+    loginFormUserEmailElementNull.dispatchEvent(new Event('input'));
+    loginFormUserEmailElement.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(loginFormUserEmailElementNull.value).toBeLessThan(1);
+      expect(loginFormUserEmailElement.value).toBeLessThan(1);
+      done();
+    });
+});
+
 });
