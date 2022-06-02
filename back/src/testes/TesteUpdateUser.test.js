@@ -8,10 +8,9 @@ describe('Teste para checar se o Update está funcionando', function(){
         .put('/user/9')
         .send(
             {
-                "name" : "Da",
-                "email" : "jonahgr@hotmail.com",
-                "password" : "4531",
-                "user_role_id" : 2
+                "treino_id": 1,
+	            "user_id" : 1,
+	            "comentario" : "TestfdeEdit"
             }
         )
         expect(200);      
