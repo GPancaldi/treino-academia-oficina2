@@ -1,7 +1,7 @@
 _type: export
 __export_format: 4
-__export_date: 2022-04-18T00:00:58.291Z
-__export_source: insomnia.desktop.app:v2022.2.1
+__export_date: 2022-05-30T20:43:03.634Z
+__export_source: insomnia.desktop.app:v2022.3.0
 resources:
   - _id: req_f2d8335e0cb348959b7ee9b764180743
     parentId: fld_3f912a94638e4afc8a5bbd8e84678f35
@@ -97,7 +97,7 @@ resources:
     _type: request
   - _id: req_69d9d022a3514464b8899aec08b7c4b5
     parentId: fld_3f912a94638e4afc8a5bbd8e84678f35
-    modified: 1650240000206
+    modified: 1653934031786
     created: 1650239868705
     url: http://localhost:3000/user/login
     name: Login
@@ -163,6 +163,333 @@ resources:
     created: 1650239403874
     url: http://localhost:3000/user/7
     name: Delete User
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1649560422711.4375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e887f7cdffe34013ba10613dc3c607b7
+    parentId: fld_b3a7f1f34c264416b6c85310735e2992
+    modified: 1653934329326
+    created: 1653934043960
+    url: http://localhost:3000/exercicio
+    name: Get Exercicios
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1650230619253
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_b3a7f1f34c264416b6c85310735e2992
+    parentId: wrk_31b26a88449c43eaa7234b827d32c5c6
+    modified: 1653934043945
+    created: 1653934043945
+    name: Exercicio
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1650060541303
+    _type: request_group
+  - _id: req_d8d784edc4d442d6ac5fd632a6b7dd03
+    parentId: fld_b3a7f1f34c264416b6c85310735e2992
+    modified: 1653936204753
+    created: 1653934043972
+    url: http://localhost:3000/exercicio/4
+    name: Get Exercicios
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1649873181097.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_407d4f2056024314be7f2479130e0b3c
+    parentId: fld_b3a7f1f34c264416b6c85310735e2992
+    modified: 1653936190154
+    created: 1653934043977
+    url: http://localhost:3000/exercicio
+    name: Add Exercicio
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "name": "Biceps Alternado",
+            "treino_group_id": 1,
+            "repeticoes": "9",
+            "series": "3"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_a8f14da769eb4c55bf43817a0e0a11f7
+    authentication: {}
+    metaSortKey: -1649694462019.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_4034e44ad50d46aa9b55acebd54a24b5
+    parentId: fld_b3a7f1f34c264416b6c85310735e2992
+    modified: 1653936180086
+    created: 1653934043980
+    url: http://localhost:3000/exercicio/4
+    name: Update Exercicio
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name" : "Costas Tripla"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_a8f14da769eb4c55bf43817a0e0a11f7
+    authentication: {}
+    metaSortKey: -1649605102480.875
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e1798481e5c64f0d8314bdf1e17f693c
+    parentId: fld_b3a7f1f34c264416b6c85310735e2992
+    modified: 1653936199607
+    created: 1653934043985
+    url: http://localhost:3000/exercicio/5
+    name: Delete Exercicio
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1649560422711.4375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_258c9bf8dc69471e90d0c04815cc8a74
+    parentId: fld_c33b56e6d0a04f4dabddf6fac7da6c90
+    modified: 1653937618697
+    created: 1653937472314
+    url: http://localhost:3000/treino
+    name: Get Treinos
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1650230619253
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_c33b56e6d0a04f4dabddf6fac7da6c90
+    parentId: wrk_31b26a88449c43eaa7234b827d32c5c6
+    modified: 1653937478559
+    created: 1653937472307
+    name: Treino
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1649975535768
+    _type: request_group
+  - _id: req_da50ae14503041adacfa48781ea7f78b
+    parentId: fld_c33b56e6d0a04f4dabddf6fac7da6c90
+    modified: 1653941717319
+    created: 1653937472319
+    url: http://localhost:3000/treino/1
+    name: Get Treino
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1649873181097.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_62536b31ae17440e8cf9f5766c898767
+    parentId: fld_c33b56e6d0a04f4dabddf6fac7da6c90
+    modified: 1653942657889
+    created: 1653937472323
+    url: http://localhost:3000/treino
+    name: Add Treino
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "name": "Treino crazy"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_a8f14da769eb4c55bf43817a0e0a11f7
+    authentication: {}
+    metaSortKey: -1649694462019.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_63881473ca034cc984df8732d8de74b8
+    parentId: fld_c33b56e6d0a04f4dabddf6fac7da6c90
+    modified: 1653943226973
+    created: 1653942628778
+    url: http://localhost:3000/treino/comentario
+    name: Add Comentario
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "treino_id": 1,
+        	"user_id" : 1,
+        	"comentario" : "Teste2"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_a8f14da769eb4c55bf43817a0e0a11f7
+    authentication: {}
+    metaSortKey: -1649672122135.0312
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e613353e863e48a4813cde79b4ba2c32
+    parentId: fld_c33b56e6d0a04f4dabddf6fac7da6c90
+    modified: 1653943336876
+    created: 1653943061144
+    url: http://localhost:3000/treino/comentario/2
+    name: Edit Comentario
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "treino_id": 1,
+        	"user_id" : 1,
+        	"comentario" : "TestfdeEdit"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_a8f14da769eb4c55bf43817a0e0a11f7
+    authentication: {}
+    metaSortKey: -1649660952192.6719
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_695d0ea329ca4a56b7cdae5639d21f57
+    parentId: fld_c33b56e6d0a04f4dabddf6fac7da6c90
+    modified: 1653943337786
+    created: 1653937472328
+    url: http://localhost:3000/treino/2
+    name: Update Treino
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name" : "Treino Crazdasy2"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_a8f14da769eb4c55bf43817a0e0a11f7
+    authentication: {}
+    metaSortKey: -1649605102480.875
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d7e2d475fd734a8894d34d38eea5219c
+    parentId: fld_c33b56e6d0a04f4dabddf6fac7da6c90
+    modified: 1653942930131
+    created: 1653937472331
+    url: http://localhost:3000/treino/2
+    name: Delete Treino
     description: ""
     method: DELETE
     body: {}
