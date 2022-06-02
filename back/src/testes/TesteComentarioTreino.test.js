@@ -2,7 +2,7 @@ const request = require("supertest");
 const app = require("../app");
 
 
-describe('Testes para checar se o comentario está funcionando', async function(){
+describe('Testes para checar se o comentario está funcionando',  function(){
     it('Teste na rota POST treino/comentario', async function(){
         const response = await request(app)
           .post('treino/comentario')
