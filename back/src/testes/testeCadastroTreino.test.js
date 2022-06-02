@@ -1,7 +1,7 @@
 const request = require("supertest");
 const app = require("../app");
 
-describe('Teste para checar se o cadastro esta funcionando', function(){
+describe('Testes para checar se o cadastro de um treino esta funcionando', function(){
     it('Teste na rota POST /treino', async function(){
       const response = await request(app)
         .post('/treino')
