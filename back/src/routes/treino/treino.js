@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     for (const treino of treinos) {
       treino.exercicios = await bdService.getRawInstructions(`SELECT * FROM exercicio WHERE isdeleted <> true AND treino_group_id = $1`, [treino.id]) 
       treino.comentarios = await bdService.getRawInstructions(`SELECT a.*, b.name as author_name FROM comentario_treino as a LEFT JOIN users as B ON a.user_id = b.id 
-      WHERE isdeleted <> true AND a.treino_id = $1`, [treino.id]) 
+      WHERE a.isdeleted <> true AND a.treino_id = $1`, [treino.id]) 
     }
     res.send(treinos);
   } catch (err) {
