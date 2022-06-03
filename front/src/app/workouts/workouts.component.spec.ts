@@ -1,4 +1,9 @@
-/*import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RouterTestingModule } from '@angular/router/testing';
+import { LoginComponent } from '../login/login.component';
 
 import { WorkoutsComponent } from './workouts.component';
 
@@ -8,7 +13,8 @@ describe('WorkoutsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WorkoutsComponent ]
+      declarations: [ WorkoutsComponent ],
+      imports: [FormsModule, ReactiveFormsModule, HttpClientModule, MatSnackBarModule, RouterTestingModule.withRoutes([{path: 'login', component: LoginComponent}])]
     })
     .compileComponents();
   });
@@ -19,8 +25,41 @@ describe('WorkoutsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Should render the workouts registration form', () => {
+    const formElement = fixture.debugElement.nativeElement.querySelector('form');
+    const inputElements = formElement.querySelectorAll('input');
+    expect(inputElements.length).toEqual(1);
+  })
+
+  it('Should enter workouts registration data', (done) => {
+    debugger;
+    const workoutsNameElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[0];
+
+    workoutsNameElement.value = 'teste';
+
+    workoutsNameElement.dispatchEvent(new Event('input'));
+
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      const workoutsNameFormGroup = component.form.get('name');
+
+      expect(workoutsNameElement.value).toEqual(workoutsNameFormGroup.value);
+      done();
+    });
+  });
+
+  it('Should not be enter a value null or void',(done) => {
+    const workoutElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[0];
+    const workoutElementNull: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[0];
+    workoutElementNull.value = null;
+    workoutElement.value = '';
+    workoutElementNull.dispatchEvent(new Event('input'));
+    workoutElement.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(workoutElementNull.value).toBeLessThan(1);
+      expect(workoutElement.value).toBeLessThan(1);
+      done();
+    });
   });
 });
-*/

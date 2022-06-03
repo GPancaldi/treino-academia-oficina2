@@ -60,46 +60,46 @@ describe('ExercisesComponent', () => {
   });
 
   it('Should not be enter a value null or void',(done) => {
-    const loginFormUserEmailElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[0];
-    const loginFormUserEmailElementNull: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[0];
-    loginFormUserEmailElementNull.value = null;
-    loginFormUserEmailElement.value = '';
-    loginFormUserEmailElementNull.dispatchEvent(new Event('input'));
-    loginFormUserEmailElement.dispatchEvent(new Event('input'));
+    const exerciseElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[0];
+    const exerciseElementNull: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[0];
+    exerciseElementNull.value = null;
+    exerciseElement.value = '';
+    exerciseElementNull.dispatchEvent(new Event('input'));
+    exerciseElement.dispatchEvent(new Event('input'));
     fixture.detectChanges();
     fixture.whenStable().then(() => {
-      expect(loginFormUserEmailElementNull.value).toBeLessThan(1);
-      expect(loginFormUserEmailElement.value).toBeLessThan(1);
+      expect(exerciseElementNull.value).toBeLessThan(1);
+      expect(exerciseElement.value).toBeLessThan(1);
       done();
     });
   });
 
   it('Should not be enter a value null or void',(done) => {
-    const loginFormUserEmailElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[1];
-    const loginFormUserEmailElementNull: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[1];
-    loginFormUserEmailElementNull.value = null;
-    loginFormUserEmailElement.value = '';
-    loginFormUserEmailElementNull.dispatchEvent(new Event('input'));
-    loginFormUserEmailElement.dispatchEvent(new Event('input'));
+    const exerciseElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[1];
+    const exerciseElementNull: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[1];
+    exerciseElementNull.value = null;
+    exerciseElement.value = '';
+    exerciseElementNull.dispatchEvent(new Event('input'));
+    exerciseElement.dispatchEvent(new Event('input'));
     fixture.detectChanges();
     fixture.whenStable().then(() => {
-      expect(loginFormUserEmailElementNull.value).toBeLessThan(1);
-      expect(loginFormUserEmailElement.value).toBeLessThan(1);
+      expect(exerciseElementNull.value).toBeLessThan(1);
+      expect(exerciseElement.value).toBeLessThan(1);
       done();
     });
   });
 
   it('Should not be enter a value null or void',(done) => {
-    const loginFormUserEmailElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[2];
-    const loginFormUserEmailElementNull: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[2];
-    loginFormUserEmailElementNull.value = null;
-    loginFormUserEmailElement.value = '';
-    loginFormUserEmailElementNull.dispatchEvent(new Event('input'));
-    loginFormUserEmailElement.dispatchEvent(new Event('input'));
+    const exerciseElement: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[2];
+    const exerciseElementNull: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('form').querySelectorAll('input')[2];
+    exerciseElementNull.value = null;
+    exerciseElement.value = '';
+    exerciseElementNull.dispatchEvent(new Event('input'));
+    exerciseElement.dispatchEvent(new Event('input'));
     fixture.detectChanges();
     fixture.whenStable().then(() => {
-      expect(loginFormUserEmailElementNull.value).toBeLessThan(1);
-      expect(loginFormUserEmailElement.value).toBeLessThan(1);
+      expect(exerciseElementNull.value).toBeLessThan(1);
+      expect(exerciseElement.value).toBeLessThan(1);
       done();
     });
   });
