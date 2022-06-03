@@ -49,5 +49,13 @@ export class ApiService {
         return this.http.post(url, formValue, httpOptions);
     }
 
+    put(endpoint: any, data: any = null): Observable<any> {
+        const url = this.url + endpoint;
+        return this.http.put(url, data)
+    }
 
+    delete<T>(endpoint : string, data : T = null) {
+        const url = this.url + endpoint;
+        return this.http.delete(url, {body : data})
+      }
 }

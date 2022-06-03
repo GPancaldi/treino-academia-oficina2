@@ -1,8 +1,9 @@
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTable } from '@angular/material/table';
-import { Router } from '@angular/router';
-import { Workout } from '../shared/interfaces/workouts.interface';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Exercises } from '../shared/interfaces/exercises.interface';
 import { ApiService } from '../shared/services/api.service';
 import { UserInfoService } from '../shared/services/user-info.service';
 
@@ -17,90 +18,122 @@ export class WorkoutsComponent implements OnInit {
   constructor(
     private _userInfo: UserInfoService,
     private router: Router,
-    private _api: ApiService
+    private _api: ApiService,
+    private route: ActivatedRoute,
+    private cdRef: ChangeDetectorRef,
+    private _snackBar: MatSnackBar
     ) { }
 
   exercisesList: any[];
+  isNew = true;
+  userId = '';
+
+  displayedColumns: string[] = ['name', 'series', 'reps'];
+  clickedRow: Exercises = {} as Exercises;
+  dataSource: Exercises[] = [];
+
+  @ViewChild(MatTable) table: MatTable<Exercises>;
 
   form: FormGroup = new FormGroup({
-  //  workout:  new FormControl('', [Validators.required]),
-    name:  new FormControl('', [Validators.required]),
-  //  weight: new FormControl('', [Validators.required]),
-  //  reps: new FormControl('', [Validators.required]),
-  //  series: new FormControl('', [Validators.required]),
+    name: new FormControl('', [Validators.required]),
   });
-  
 
-  //@ViewChild(MatTable) table: MatTable<Workout>;
-//
-  //displayedColumns: string[] = ['workout', 'name', 'weight', 'reps', 'series'];
-  //dataSource: Workout[] = [];
-  //clickedRow: Workout = {} as Workout;
-  //isEdit = false;
-//
-ngOnInit(): void {
-  if(!this._userInfo.getUserInfo())
-    this.router.navigate(['/login']);
-}
+  ngOnInit(): void {
+    if(!this._userInfo.getUserInfo())
+      this.router.navigate(['/login']);
 
-add() {
-  return new Promise((resolve, reject) => {
-    this._api.post('/cliente', this.form)
-      .subscribe((response: any) => {
-        resolve(response)
-      }, reject)
-  })
-}
+    this.route.paramMap.subscribe(params => {
+      if (params.get('id') !== null) {
+        this.isNew = false;
+        this.userId = params.get('id');
+        this.renderForm(params.get('id'))
+        this.renderGrid(params.get('id'));
+      }
+    });
+  }
 
-getExercises() {
+  saveNew() {
+    return new Promise((resolve, reject) => {
+      this._api.post('/treino', this.form.value)
+        .subscribe((response: any) => {
+          console.log(response);
+          this._snackBar.open('Registro Salvo com Sucesso!', '',  { duration: 2000 })
+          this.router.navigate(['/workouts-list'])
+          resolve(response)
+        }, reject)
+    })
+  }
 
-}
+  renderForm(id: string): void {
+    new Promise((resolve, reject) => {
+      this._api.get('/treino/' + id + '')
+        .subscribe((response: any) => {
+          console.log(response);
+          
+          this.form.patchValue({
+            name: response[0].name,
+          });
 
-//
-  //clickGrid(row: Workout): void {
-  //  this.clickedRow = row;
-//
-  //  this.form.patchValue({
-  //    id: row.id,
-  //    name: row.name,
-  //    workout: row.workout,
-  //    weight: row.weight,
-  //    reps: row.reps,
-  //    series: row.series
-  //  })
-//
-  //  this.isEdit = true;
-  //}
-//
-  //addWorkout() {
-//
-  //  
-  //  this.dataSource.push({
-  //    id: 1,
-  //    name: this.form.controls.name.value,
-  //    workout: this.form.controls.workout.value,
-  //    weight: this.form.controls.weight.value,
-  //    reps: this.form.controls.reps.value,
-  //    series: this.form.controls.series.value
-  //  })
-//
-  //  this.form.patchValue({
-  //    name: null,
-  //    workout: null,
-  //    weight: null,
-  //    reps: null,
-  //    series: null
-  //  });
-//
-  //  this.table.renderRows();
-  //}
-//
-  //editWorkout() {
-  //  this.isEdit = false;
-  //}
-//
-  //removeWorkout() {
-  //  this.isEdit = false;
-  //}
+          this.cdRef.detectChanges();
+          resolve(response)
+        }, reject)
+    })
+  }
+
+  saveEdit() {
+    debugger;
+    return new Promise((resolve, reject) => {
+      this._api.put('/treino/' + this.userId, this.form.value)
+        .subscribe((response: any) => {
+          console.log(response);
+          this._snackBar.open('Registro Editado com Sucesso!', '',  { duration: 2000 })
+          this.router.navigate(['/workouts-list'])
+          resolve(response)
+        }, reject)
+    })
+  }
+
+  delete() {
+    return new Promise((resolve, reject) => {
+      this._api.delete('/treino/' + this.userId)
+        .subscribe((response: any) => {
+          console.log(response);
+          this._snackBar.open('Registro Deletado com Sucesso!', '',  { duration: 2000 })
+          this.router.navigate(['/workouts-list'])
+          resolve(response)
+        }, reject)
+    })
+  }
+
+  renderGrid(id: string): void {
+    new Promise((resolve, reject) => {
+      this._api.get('/treino/' + id)
+        .subscribe((response: any[]) => {
+          console.log(response);
+          
+          response[0].exercicios.forEach((x: { name: string; id: any; repeticoes: any; series: any; treino_group_id: any; }) => {
+            if (x.name !== '') {
+              this.dataSource.push({
+                id: x.id,
+                name: x.name,
+                reps: x.repeticoes,
+                series: x.series,
+                workout: x.treino_group_id
+              })
+            }
+          });
+          
+          this.table.renderRows();
+          resolve(response)
+        }, reject)
+    })
+  }
+
+  showButtons(): boolean {
+    if(localStorage.getItem('userRole') === '2')
+      return false;
+    else 
+      return true;
+  }
 }
 

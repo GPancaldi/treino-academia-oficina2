@@ -15,13 +15,19 @@ export class AppComponent {
   ) { }
 
   showFiller = false;
+  showDrawer = true;
 
   showSidenav(): boolean {
-    return !this.router.url.includes('login');
+    if(localStorage.getItem('userRole') === '2')
+      this.showDrawer = false;
+
+    console.log('appC ' + localStorage.getItem('userRole'))
+    return !this.router.url.includes('login')
   }
 
   onLeave() {
     localStorage.setItem('user', '');
+    localStorage.setItem('userRole', '');
     this._userInfo.setUserInfo(0);
     this.router.navigate(['/login']);
     this.showSidenav();

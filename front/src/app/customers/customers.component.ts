@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { throwToolbarMixedModesError } from '@angular/material/toolbar';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../shared/services/api.service';
 import { UserInfoService } from '../shared/services/user-info.service';
 
@@ -18,15 +20,29 @@ export class CustomersComponent implements OnInit {
     user_role_id: new FormControl(''),
   });
 
+  isNew = true;
+  userId = '';
+
   constructor(
     private _userInfo: UserInfoService,
     private router: Router,
-    private _api: ApiService
+    private _api: ApiService,
+    private route: ActivatedRoute,
+    private cdRef: ChangeDetectorRef,
+    private _snackBar: MatSnackBar
     ) { }
 
   ngOnInit(): void {
     if(!this._userInfo.getUserInfo())
       this.router.navigate(['/login']);
+
+    this.route.paramMap.subscribe(params => {
+      if (params.get('id') !== null) {
+        this.isNew = false;
+        this.userId = params.get('id');
+        this.renderForm(params.get('id'))
+      }
+    });
   }
 
   getErrorMessage(form: string) {
@@ -56,15 +72,65 @@ export class CustomersComponent implements OnInit {
     return this.form.controls.email.hasError('email') ? 'Email inválido!' : '';
   }
 
-  add() {
+  saveNew() {
     this.form.patchValue({
       user_role_id: 2
     });
     return new Promise((resolve, reject) => {
-      console.log('teste')
       this._api.post('/user', this.form.value)
         .subscribe((response: any) => {
           console.log(response);
+          this._snackBar.open('Registro Salvo com Sucesso!', '',  { duration: 2000 })
+          this.router.navigate(['/customers-list'])
+          resolve(response)
+        }, reject)
+    })
+  }
+
+  saveEdit() {
+    let obj = {
+      name : this.form.value.name,
+      email : this.form.value.email,
+      password : this.form.value.password,
+      user_role_id : 2
+    }
+
+    return new Promise((resolve, reject) => {
+      this._api.put('/user/' + this.userId, obj)
+        .subscribe((response: any) => {
+          console.log(response);
+          this._snackBar.open('Registro Editado com Sucesso!', '',  { duration: 2000 })
+          this.router.navigate(['/customers-list'])
+          resolve(response)
+        }, reject)
+    })
+  }
+
+  delete() {
+    return new Promise((resolve, reject) => {
+      this._api.delete('/user/' + this.userId)
+        .subscribe((response: any) => {
+          console.log(response);
+          this._snackBar.open('Registro Deletado com Sucesso!', '',  { duration: 2000 })
+          this.router.navigate(['/customers-list'])
+          resolve(response)
+        }, reject)
+    })
+  }
+
+  renderForm(id: string): void {
+    new Promise((resolve, reject) => {
+      this._api.get('/user/' + id + '')
+        .subscribe((response: any) => {
+          console.log(response);
+          
+          this.form.patchValue({
+            name: response[0].name,
+            email: response[0].email,
+            password: response[0].password
+          });
+
+          this.cdRef.detectChanges();
           resolve(response)
         }, reject)
     })

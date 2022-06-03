@@ -1,6 +1,12 @@
-<div class="header">
-    <span class="title">Exercício</span>
-    <button class="button" (click)="add" mat-raised-button color="primary">Adicionar Exercício</button>
+<div style="padding-left: 20px">
+  <div class="header">
+    <span class="title">Dados de Exercicios</span>
+    <button *ngIf="isNew" class="button" (click)="saveNew()" mat-raised-button color="primary">Salvar</button>
+    <div>
+      <button *ngIf="!isNew" class="button" (click)="saveEdit()" mat-raised-button color="primary">Salvar</button>
+      <button *ngIf="!isNew" class="button" (click)="delete()" mat-raised-button color="primary">Deletar</button>
+    </div>
+  </div>
 </div>
 <br>
 <hr>
@@ -14,8 +20,12 @@
     </div>
     <div class="field">
       <mat-form-field appearance="outline">
-        <mat-label>Peso</mat-label>
-        <input type="number" matInput formControlName="weight" required>
+        <mat-label>Treino</mat-label>
+        <mat-select name="workout" [(value)]="selected">
+          <mat-option *ngFor="let workout of dataSource" [value]="workout.id">
+            {{workout.name}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
     <div class="field">

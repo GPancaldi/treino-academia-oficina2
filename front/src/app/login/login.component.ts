@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { UserInfo } from '../shared/interfaces/user-info.interface';
 import { ApiService } from '../shared/services/api.service';
 import { UserInfoService } from '../shared/services/user-info.service';
 
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit{
 
   isRegister = false;
   usersList: any[];
+  userInfo: UserInfo;
 
   @Output() submitEM = new EventEmitter();
 
@@ -68,11 +70,8 @@ export class LoginComponent implements OnInit{
     return new Promise((resolve, reject) => {
       this._api.post('/user/login', this.form.value)
         .subscribe((response: any) => {
-          const idUser = 3;
-          this._userInfo.setUserInfo(2);
-          localStorage.setItem('user', idUser.toString())
           console.log(response)
-          this.router.navigate(['/customers']);
+          this.getUserInfo(this.form.controls.email.value)
           resolve(response)
         }, reject)
     })
@@ -104,6 +103,42 @@ export class LoginComponent implements OnInit{
       this._api.post('/user/login', this.form.value)
         .subscribe((response: any) => {
           console.log(response)
+          resolve(response)
+        }, reject)
+    })
+  }
+
+  getUserInfo(email: string): void {
+    new Promise((resolve, reject) => {
+      this._api.get('/user')
+        .subscribe((response: any[]) => {
+          console.log(response);
+          
+          let userId: number;
+          let userRole: number;
+
+          response.forEach(x => {
+            if (x.email === email) {
+              userId = x.id;
+              userRole = x.user_role_id
+            }
+          })
+
+          localStorage.setItem('user', '');
+          localStorage.setItem('userRole', '');
+
+          this._userInfo.setUserInfo(userId);
+          localStorage.setItem('user', userId.toString());
+          localStorage.setItem('userRole', userRole.toString());
+
+          if (userRole === 1)
+            this.router.navigate(['/customers-list']);
+          else 
+            this.router.navigate(['/customers-workouts-list']);
+
+          console.log(userRole)
+          console.log(userId)
+          console.log('testando ' + localStorage.getItem('userRole'))
           resolve(response)
         }, reject)
     })

@@ -2,7 +2,7 @@
   <mat-toolbar>
     <div class="div-flex">
       <div>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+        <button [ngStyle]="{'display' : showDrawer ? '' : 'none'}" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
         <img src="assets\icons\sidenav-icon.png" alt="imagem" style="width:30px; height:50px;">
@@ -15,9 +15,9 @@
 <mat-drawer-container class="container">
   <mat-drawer #drawer class="sidenav" mode="side" [ngStyle]="{'display' : showSidenav() ? 'block' : 'none'}">
     <mat-selection-list #shoes [multiple]="false">
-      <mat-list-option [routerLink]="['/customers']" >Clientes</mat-list-option>
-      <mat-list-option [routerLink]="['/exercises']">Exercícios</mat-list-option>
-      <mat-list-option [routerLink]="['/workouts']">Treino</mat-list-option>
+      <mat-list-option [routerLink]="['/customers-list']" >Clientes</mat-list-option>
+      <mat-list-option [routerLink]="['/exercises-list']">Exercícios</mat-list-option>
+      <mat-list-option [routerLink]="['/workouts-list']">Treino</mat-list-option>
     </mat-selection-list>
   </mat-drawer>
   <mat-drawer-content>

@@ -28,6 +28,10 @@ import { ApiService } from './shared/services/api.service';
 import { UserInfoService } from './shared/services/user-info.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CustomersListComponent } from './customers-list/customers-list.component';
+import { WorkoutsListComponent } from './workouts-list/workouts-list.component';
+import { ExercisesListComponent } from './exercises-list/exercises-list.component';
+import { WorkoutsCutomersListComponent } from './workouts-customers-list/workouts-customers-list.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     WorkoutsComponent,
     GymsComponent,
     LoginComponent,
-    ExercisesComponent
+    ExercisesComponent,
+    CustomersListComponent,
+    WorkoutsListComponent,
+    ExercisesListComponent,
+    WorkoutsCutomersListComponent
   ],
   imports: [
     BrowserModule,
