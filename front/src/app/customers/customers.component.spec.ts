@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { CustomersComponent } from './customers.component';
@@ -12,7 +13,7 @@ describe('CustomersComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ CustomersComponent ],
-      imports: [FormsModule, ReactiveFormsModule, HttpClientModule, RouterTestingModule.withRoutes([])]
+      imports: [FormsModule, ReactiveFormsModule, HttpClientModule, MatSnackBarModule, RouterTestingModule.withRoutes([])]
     })
     .compileComponents();
   });
@@ -75,6 +76,6 @@ describe('CustomersComponent', () => {
       expect(loginFormUserEmailElement.value).toBeLessThan(1);
       done();
     });
-});
+  });
 
 });
