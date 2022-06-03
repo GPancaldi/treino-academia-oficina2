@@ -33,7 +33,7 @@ export class CustomersListComponent implements OnInit {
           console.log(response);
           
           response.forEach(x => {
-            if (x.name !== '' && x.email !== '') {
+            if (x.name !== '' && x.email !== '' && x.user_role_id === 2) {
               this.dataSource.push({
                 id: x.id,
                 name: x.name,
