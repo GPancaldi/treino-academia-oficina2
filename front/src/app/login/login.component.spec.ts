@@ -6,6 +6,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { By } from '@angular/platform-browser';
+import { ApiService } from '../shared/services/api.service';
+import { of } from 'rxjs';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -103,4 +105,25 @@ describe('LoginComponent', () => {
     });
   });
 
+  it('should be test call api', () => {
+    spyOn(component, 'onLogin');
+    component.onLogin();
+    expect(component.onLogin).toHaveBeenCalled();
+  });
+
+  it('should be test send data to api', () => {
+    var obj: {
+      email: "teste@teste.com",
+      senha: "123";
+    }
+    let services = fixture.debugElement.injector.get(ApiService);
+    spyOn(services, 'post').and.callFake(()=>{
+      return of({
+        endpoint: '/user/login',
+        formValue: obj
+      })
+    });
+    services.post('/user/login', obj);
+    expect(services.post).toHaveBeenCalledWith('/user/login', obj);
+  });
 });

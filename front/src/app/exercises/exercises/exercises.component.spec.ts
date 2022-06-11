@@ -3,8 +3,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
 import { LoginComponent } from 'src/app/login/login.component';
-
+import { ApiService } from 'src/app/shared/services/api.service';
 import { ExercisesComponent } from './exercises.component';
 
 describe('ExercisesComponent', () => {
@@ -14,7 +15,7 @@ describe('ExercisesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ExercisesComponent ],
-      imports: [FormsModule, ReactiveFormsModule, HttpClientModule, MatSnackBarModule, RouterTestingModule.withRoutes([{path: 'login', component: LoginComponent}])]
+      imports: [FormsModule, ReactiveFormsModule, HttpClientModule, MatSnackBarModule, RouterTestingModule.withRoutes([{path: 'login', component: LoginComponent}]) ]
     })
     .compileComponents();
   });
@@ -103,4 +104,31 @@ describe('ExercisesComponent', () => {
       done();
     });
   });
+
+  it('should be test call api', () => {
+    spyOn(component, 'saveNew');
+    component.saveNew();
+    expect(component.saveNew).toHaveBeenCalled();
+  });
+
+  it('should be test send data to api', () => {
+    var obj: {
+        name: "Teste";
+        treino_group_id: "treino";
+        repeticoes: 1;
+        series: 2;
+    }
+    let services = fixture.debugElement.injector.get(ApiService);
+    spyOn(services, 'post').and.callFake(()=>{
+      return of({
+        endpoint: '/exercicio',
+        formValue: obj
+      })
+    });
+    services.post('/exercicio', obj);
+    expect(services.post).toHaveBeenCalledWith('/exercicio', obj);
+  });
+
 });
+
+

@@ -3,6 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
+import { ApiService } from '../shared/services/api.service';
 
 import { CustomersComponent } from './customers.component';
 
@@ -76,6 +78,27 @@ describe('CustomersComponent', () => {
       expect(loginFormUserEmailElement.value).toBeLessThan(1);
       done();
     });
+  });
+
+  it('should be test call api', () => {
+    spyOn(component, 'saveNew');
+    component.saveNew();
+    expect(component.saveNew).toHaveBeenCalled();
+  });
+
+  it('should be test send data to api', () => {
+    var obj: {
+      user_role_id: 2;
+    }
+    let services = fixture.debugElement.injector.get(ApiService);
+    spyOn(services, 'post').and.callFake(()=>{
+      return of({
+        endpoint: '/user',
+        formValue: obj
+      })
+    });
+    services.post('/user', obj);
+    expect(services.post).toHaveBeenCalledWith('/user', obj);
   });
 
 });
