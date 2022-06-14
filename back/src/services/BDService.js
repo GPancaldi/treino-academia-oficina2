@@ -2,13 +2,12 @@ const { Client } = require('pg')
 const { config } = require("../../config/config")
 class BDService {
     client;
-    constructor() {
-        this.client = new Client(config.connectionString)
+    constructor(masked = false) {
+        this.client = new Client(masked ? config.developermasked : config.connectionString)
         this.initConnection();
     }
 
     async initConnection() {
-        console.log("Iniciando conexão com banco");
         await this.client.connect();
     }
 

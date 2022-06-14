@@ -1,0 +1,2 @@
+CREATE SCHEMA masked
+    AUTHORIZATION masked;

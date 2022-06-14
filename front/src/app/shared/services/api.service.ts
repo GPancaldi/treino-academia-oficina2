@@ -23,39 +23,32 @@ export class ApiService {
         console.log(this.user)
     }
 
+    getHttpHeaders() : HttpHeaders {
+        return new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'is-masked' : '0'
+        })
+    }
+
     get(endpoint: any): Observable<any> {
         const url = this.url + endpoint;
-        let httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Access-Control-Allow-Headers': 'Content-Type',
-            })
-        };
-        return this.http.get(url, httpOptions);
+        return this.http.get(url, {headers : this.getHttpHeaders()});
     }
     
     post(endpoint: any, formValue: any): Observable<any> {
         const url = this.url + endpoint;
-        let httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Access-Control-Allow-Headers': 'Content-Type',
-            })
-        };
-        console.log("post com")
-        console.log(httpOptions)
-        return this.http.post(url, formValue, httpOptions);
+        return this.http.post(url, formValue, {headers : this.getHttpHeaders()});
     }
 
     put(endpoint: any, data: any = null): Observable<any> {
         const url = this.url + endpoint;
-        return this.http.put(url, data)
+        return this.http.put(url, data, {headers : this.getHttpHeaders()})
     }
 
     delete<T>(endpoint : string, data : T = null) {
         const url = this.url + endpoint;
-        return this.http.delete(url, {body : data})
+        return this.http.delete(url, {body : data, headers : this.getHttpHeaders()})
       }
 }
