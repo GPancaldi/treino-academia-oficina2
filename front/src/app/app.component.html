@@ -1,4 +1,4 @@
-<div *ngIf="showSidenav()">
+<!--<div *ngIf="showSidenav()">
   <mat-toolbar>
     <div class="div-flex">
       <div>
@@ -11,15 +11,15 @@
       <button (click)="onLeave()" type="submit" mat-button >Sair</button>
     </div>
   </mat-toolbar>
-</div>
+</div>-->
 <mat-drawer-container class="container">
-  <mat-drawer #drawer class="sidenav" mode="side" [ngStyle]="{'display' : showSidenav() ? 'block' : 'none'}">
+  <!--<mat-drawer #drawer class="sidenav" mode="side" [ngStyle]="{'display' : showSidenav() ? 'block' : 'none'}">
     <mat-selection-list #shoes [multiple]="false">
       <mat-list-option [routerLink]="['/customers-list']" >Clientes</mat-list-option>
       <mat-list-option [routerLink]="['/exercises-list']">Exercícios</mat-list-option>
       <mat-list-option [routerLink]="['/workouts-list']">Treino</mat-list-option>
     </mat-selection-list>
-  </mat-drawer>
+  </mat-drawer>-->
   <mat-drawer-content>
     <router-outlet></router-outlet>
   </mat-drawer-content>

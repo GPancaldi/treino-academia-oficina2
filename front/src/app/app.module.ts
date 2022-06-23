@@ -32,6 +32,7 @@ import { CustomersListComponent } from './customers-list/customers-list.componen
 import { WorkoutsListComponent } from './workouts-list/workouts-list.component';
 import { ExercisesListComponent } from './exercises-list/exercises-list.component';
 import { WorkoutsCutomersListComponent } from './workouts-customers-list/workouts-customers-list.component';
+import { CpfPipe } from './shared/pipes/cpf.pipe';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { WorkoutsCutomersListComponent } from './workouts-customers-list/workout
     CustomersListComponent,
     WorkoutsListComponent,
     ExercisesListComponent,
-    WorkoutsCutomersListComponent
+    WorkoutsCutomersListComponent,
+    CpfPipe
   ],
   imports: [
     BrowserModule,

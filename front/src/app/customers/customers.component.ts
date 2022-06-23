@@ -18,6 +18,9 @@ export class CustomersComponent implements OnInit {
     password: new FormControl('', [Validators.required]),
     email:  new FormControl('', [Validators.required, Validators.email]),
     user_role_id: new FormControl(''),
+    cpf: new FormControl('', [Validators.required]),
+    rg: new FormControl('', [Validators.required]),
+    data_nascimento: new FormControl('', [Validators.required]),
   });
 
   isNew = true;
@@ -33,9 +36,6 @@ export class CustomersComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    if(!this._userInfo.getUserInfo())
-      this.router.navigate(['/login']);
-
     this.route.paramMap.subscribe(params => {
       if (params.get('id') !== null) {
         this.isNew = false;
@@ -73,8 +73,10 @@ export class CustomersComponent implements OnInit {
   }
 
   saveNew() {
+    debugger;
     this.form.patchValue({
-      user_role_id: 2
+      user_role_id: 2,
+      data_nascimento: new Date(this.form.controls.data_nascimento.value)
     });
     return new Promise((resolve, reject) => {
       this._api.post('/user', this.form.value)
