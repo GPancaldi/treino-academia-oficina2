@@ -12,7 +12,7 @@ import { WorkoutsComponent } from './workouts/workouts.component';
 
 const routes: Routes = [
   {
-    path:'', redirectTo:'customers', pathMatch: 'full'
+    path:'', redirectTo:'login', pathMatch: 'full'
   },
   {
     path:'customers', component: CustomersComponent
