@@ -3,6 +3,7 @@ const { config } = require("../../config/config")
 class BDService {
     client;
     constructor(masked = false) {
+        console.log(masked)
         this.client = new Client(masked ? config.developermasked : config.connectionString)
         this.initConnection();
     }

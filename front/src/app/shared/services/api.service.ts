@@ -28,7 +28,7 @@ export class ApiService {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
             'Access-Control-Allow-Headers': 'Content-Type',
-            'is-masked' : '0'
+            'is-masked' : localStorage.getItem("userRole") || '0'
         })
     }
 

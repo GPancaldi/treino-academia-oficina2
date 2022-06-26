@@ -7,7 +7,10 @@ class User extends Model {
         email: "",
         password: "",
         id: null,
-        user_role_id: null
+        user_role_id: null,
+        rg: "",
+        cpf: "",
+        data_nascimento : ""
     }
     constructor() {
         super()
@@ -25,6 +28,9 @@ class User extends Model {
         this.properties.email = objToSet.email ? objToSet.email : this.properties.email;
         this.properties.password = objToSet.password ? objToSet.password : this.properties.password;
         this.properties.user_role_id = objToSet.user_role_id ? objToSet.user_role_id : this.properties.user_role_id;
+        this.properties.rg = objToSet.rg ? objToSet.rg : this.properties.rg;
+        this.properties.cpf = objToSet.cpf ? objToSet.cpf : this.properties.cpf;
+        this.properties.data_nascimento = objToSet.data_nascimento ? objToSet.data_nascimento : this.properties.data_nascimento;
         return this.properties;
     }
 

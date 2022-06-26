@@ -18,6 +18,7 @@ function innitBD(isMasked) {
 
 function checkForMasked(req, res, next) {
     const isMasked = req.headers['is-masked']
+    console.log(isMasked)
     innitBD(isMasked == 1 ? true : false);
     next();
 }

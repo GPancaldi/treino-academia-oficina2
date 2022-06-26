@@ -15,4 +15,10 @@ CREATE TABLE public.users
 );
 
 ALTER TABLE public.users
-    OWNER to faculdade;
+    ADD COLUMN cpf text;
+
+ALTER TABLE public.users
+    ADD COLUMN rg text;
+
+ALTER TABLE public.users
+    ADD COLUMN data_nascimento text;
